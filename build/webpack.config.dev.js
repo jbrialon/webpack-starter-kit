@@ -6,16 +6,16 @@ module.exports = {
   devtool: 'eval',
   entry: [
     'webpack-hot-middleware/client',
-    path.join(__dirname, 'src/main.js')
+    path.join(__dirname, '../src/main.js')
   ],
   output: {
-    path: path.join(__dirname, '/dist/'),
+    path: path.join(__dirname, '../build/'),
     filename: '[name].js',
     publicPath: '/'
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: 'src/index.tpl.html',
+      template: 'src/index.html',
       inject: 'body',
       filename: 'index.html'
     }),
@@ -25,23 +25,25 @@ module.exports = {
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify('development'),
       '__DEV__': JSON.stringify(process.env.NODE_ENV)
-    })
+   })
   ],
+  devtool: "source-map",
   module: {
     loaders: [{
       test: /\.js?$/,
       exclude: /node_modules/,
-      loader: 'babel'
+      exclude: /jcr_root/,
+      loaders: []
     }, {
       test: /\.json?$/,
       loader: 'json'
     }, {
-      test: /\.css$/,
-      loader: 'style!css?modules&&importLoaders=1&localIdentName=[name]---[local]---[hash:base64:5]!postcss'
+        test: /\.scss$/,
+        loaders: ["style", "css", 'resolve-url', "sass"]
+    }, {
+        test: /\.(png|jpg)$/,
+        loader: 'file-loader?name=[name].[ext]'
     }]
   },
-  _hotPort: 8000,
-  postcss: [
-    require('postcss-modules-values')
-  ]
+  _hotPort: 8000
 }

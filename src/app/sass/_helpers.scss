@@ -1,0 +1,32 @@
+.relative {
+    position:relative;
+}
+
+.height100{
+    height: 100%;
+}
+
+.width100{
+    width: 100%;
+}
+
+.invisible{
+    visibility: hidden;
+    opacity: 0;
+}
+
+.noselect {
+    user-select: none;
+}
+
+.clickable{
+    cursor: pointer;
+}
+
+.center {
+    text-align:center;
+}
+
+.block {
+    display:block;
+}

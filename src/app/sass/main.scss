@@ -1,0 +1,30 @@
+////////////////////////////////////////////////////////////////////////////////
+// Page Styling
+// --------------------
+// This file combines all scss into one main style sheet, to be loaded on
+// all pages.
+////////////////////////////////////////////////////////////////////////////////
+
+
+@import "fonts";
+@import "icons";
+@import "vars";
+@import "mixins";
+@import "helpers";
+@import "generic";
+@import "forms";
+@import "transitions";
+
+
+/**
+ * Global
+ */
+
+html, body {
+    margin:0;
+    padding:0;
+}
+
+*, *:before, *:after {
+    box-sizing: border-box;
+}
